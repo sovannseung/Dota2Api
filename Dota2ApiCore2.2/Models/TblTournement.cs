@@ -20,9 +20,11 @@ namespace Dota2Api.Models
         public string TournementImageUrl { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+        public string Status { get; set; }
         public long PricePool { get; set; }
         public string Location { get; set; }
-        
+        public string Overview { get; set; }
+
         //public ICollection<TblTournementTeam> TblTournementTeam { get; set; }
     }
 }

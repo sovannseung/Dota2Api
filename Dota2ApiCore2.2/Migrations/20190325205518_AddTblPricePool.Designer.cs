@@ -4,14 +4,16 @@ using Dota2ApiCore2._2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Dota2ApiCore2._2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190325205518_AddTblPricePool")]
+    partial class AddTblPricePool
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,6 +47,8 @@ namespace Dota2ApiCore2._2.Migrations
                     b.Property<string>("BracketType");
 
                     b.Property<int>("Levels");
+
+                    b.Property<int>("MainStagePairId");
 
                     b.Property<int>("TeamAId");
 
@@ -90,8 +94,6 @@ namespace Dota2ApiCore2._2.Migrations
 
                     b.Property<long>("PricePool");
 
-                    b.Property<string>("Status");
-
                     b.Property<DateTime>("ToDate");
 
                     b.Property<string>("TournementFullName");
@@ -131,8 +133,6 @@ namespace Dota2ApiCore2._2.Migrations
                     b.Property<int>("VideoId");
 
                     b.Property<DateTime>("CreateDate");
-
-                    b.Property<string>("Duration");
 
                     b.Property<string>("EventStage")
                         .IsRequired();
@@ -176,7 +176,7 @@ namespace Dota2ApiCore2._2.Migrations
 
                     b.Property<int>("RankTo");
 
-                    b.Property<int?>("TeamId");
+                    b.Property<int>("TeamId");
 
                     b.Property<int>("TournementId");
 

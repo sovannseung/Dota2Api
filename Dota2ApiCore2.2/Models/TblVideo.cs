@@ -25,6 +25,7 @@ namespace Dota2Api.Models
         public int TeamAId { get; set; }
         public int TeamBId { get; set; }
         public string TeamWin { get; set; }
+        public string Duration { get; set; }
         public int UserCreate { get; set; }
         public DateTime CreateDate { get; set; }
     }

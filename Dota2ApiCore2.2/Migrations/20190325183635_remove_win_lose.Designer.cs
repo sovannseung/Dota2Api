@@ -4,14 +4,16 @@ using Dota2ApiCore2._2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Dota2ApiCore2._2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190325183635_remove_win_lose")]
+    partial class remove_win_lose
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,6 +47,8 @@ namespace Dota2ApiCore2._2.Migrations
                     b.Property<string>("BracketType");
 
                     b.Property<int>("Levels");
+
+                    b.Property<int>("MainStagePairId");
 
                     b.Property<int>("TeamAId");
 
@@ -86,11 +90,7 @@ namespace Dota2ApiCore2._2.Migrations
 
                     b.Property<string>("Location");
 
-                    b.Property<string>("Overview");
-
                     b.Property<long>("PricePool");
-
-                    b.Property<string>("Status");
 
                     b.Property<DateTime>("ToDate");
 
@@ -132,8 +132,6 @@ namespace Dota2ApiCore2._2.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("Duration");
-
                     b.Property<string>("EventStage")
                         .IsRequired();
 
@@ -162,27 +160,6 @@ namespace Dota2ApiCore2._2.Migrations
                     b.HasKey("VideoId");
 
                     b.ToTable("TblVideos");
-                });
-
-            modelBuilder.Entity("Dota2ApiCore2._2.Models.TblPricePool", b =>
-                {
-                    b.Property<int>("PricePoolId");
-
-                    b.Property<int>("DPCPoints");
-
-                    b.Property<int>("PricePoolUSD");
-
-                    b.Property<int>("RankFrom");
-
-                    b.Property<int>("RankTo");
-
-                    b.Property<int?>("TeamId");
-
-                    b.Property<int>("TournementId");
-
-                    b.HasKey("PricePoolId");
-
-                    b.ToTable("TblPricePools");
                 });
 
             modelBuilder.Entity("Dota2Api.Models.TblGroupStage", b =>

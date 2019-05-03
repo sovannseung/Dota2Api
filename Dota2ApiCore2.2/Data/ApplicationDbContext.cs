@@ -21,7 +21,12 @@ namespace Dota2ApiCore2._2.Data
         public DbSet<TblGroupStage> TblGroupStages { get; set; }
         public DbSet<TblVideo> TblVideos { get; set; }
         public DbSet<TblMainStage> TblMainStages { get; set; }
+        public DbSet<TblPricePool> TblPricePools { get; set; }
 
         public DbQuery<viewVideo> viewVideos { get; set; }
+        public DbQuery<viewGroupStage> viewGroupStages { get; set; }
+        public DbQuery<viewMainStage> viewMainStages { get; set; }
+
+        public DbQuery<vPricePool> vPricePools { get; set; }
     }
 }

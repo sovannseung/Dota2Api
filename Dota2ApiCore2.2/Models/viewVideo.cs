@@ -14,5 +14,6 @@ namespace Dota2ApiCore2._2.Models
         public string TeamALogo_Url { get; set; }
         public int TeamBId { get; set; }
         public string TeamBLogo_Url { get; set; }
+        public DateTime UploadDate { get; set; }
     }
 }

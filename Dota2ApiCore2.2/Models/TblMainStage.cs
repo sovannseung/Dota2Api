@@ -12,7 +12,6 @@ namespace Dota2Api.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MainStageId { get; set; }
-        public int MainStagePairId { get; set; }
         public int TournementId { get; set; }
         public TblTournement TblTournement { get; set; }
         [Column(Order = 0)]

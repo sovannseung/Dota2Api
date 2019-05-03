@@ -1,4 +1,5 @@
 ﻿using Dota2ApiCore2._2.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +22,21 @@ namespace Dota2ApiCore2_2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Dota2ApiCore2.2")));
+                options.UseSqlServer(Configuration.GetConnectionString("SmarterAsp")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // 1. Add Authentication Services
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://dota2api.auth0.com/";
+                options.Audience = "http://scienceboy007-001-site1.btempurl.com/";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +53,16 @@ namespace Dota2ApiCore2_2
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+
+            // 2. Enable authentication middleware
+            app.UseAuthentication();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "api/{controller=NewVideo}/{action=Paging}/{id?}");
+            });
         }
     }
 }

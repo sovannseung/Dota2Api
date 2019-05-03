@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Dota2ApiCore2_2.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]/[action]")]
     public class NewVideoController : Controller
     {
         private ApplicationDbContext _dbContext;
@@ -36,7 +36,8 @@ namespace Dota2ApiCore2_2.Controllers
         }
 
         // GET api/NewVideo/Paging
-        [HttpGet("[action]")]
+        //[HttpGet("[action]"]
+        [HttpGet]
         public IActionResult Paging(int? pageNumber, int? pageSize)
         {
             var currentPageNumber = pageNumber ?? 1;
